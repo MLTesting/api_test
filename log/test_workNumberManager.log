@@ -1,0 +1,38 @@
+. testUseCases/workNumberManager/test_workNumberManager.py::test_0001
+. testUseCases/workNumberManager/test_workNumberManager.py::test_0002
+. testUseCases/workNumberManager/test_workNumberManager.py::test_0003
+. testUseCases/workNumberManager/test_workNumberManager.py::test_0004
+. testUseCases/workNumberManager/test_workNumberManager.py::test_0005
+. testUseCases/workNumberManager/test_workNumberManager.py::test_0006
+. testUseCases/workNumberManager/test_workNumberManager.py::test_0007
+. testUseCases/workNumberManager/test_workNumberManager.py::test_0008
+. testUseCases/workNumberManager/test_workNumberManager.py::test_0009
+. testUseCases/workNumberManager/test_workNumberManager.py::test_0010
+. testUseCases/workNumberManager/test_workNumberManager.py::test_0011
+. testUseCases/workNumberManager/test_workNumberManager.py::test_0012
+. testUseCases/workNumberManager/test_workNumberManager.py::test_0013
+F testUseCases/workNumberManager/test_workNumberManager.py::test_0014
+ def test_0014():
+         """
+             测试批量启用工号接口：
+                 选择状态为启用和禁用的工号
+         """
+         url = f"{RBJ_HOST}/workNumber/enable/1"
+         headers = {
+             "Access-Token": token,
+             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                           "Chrome/89.0.4389.128 Safari/537.36"
+         }
+         data = {
+             "ids[0]": "843",
+             "ids[1]": "842",
+             "ids[2]": "1075",
+             "ids[3]": "1076"
+         }
+         with requests.request("put", url, data=data, headers=headers) as response:
+ >           assert response.json()["code"] == "506"
+ E           AssertionError: assert '200' == '506'
+ E             - 200
+ E             + 506
+ 
+ ..\testUseCases\workNumberManager\test_workNumberManager.py:275: AssertionError
